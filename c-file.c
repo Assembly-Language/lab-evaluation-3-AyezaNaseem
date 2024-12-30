@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 
-void __stdcall asmfunc(int p1 ,int p2);
+int __stdcall asmfunc(short *p1 ,int p2);
 
 #ifdef __cplusplus
 }
@@ -17,17 +17,15 @@ void __stdcall asmfunc(int p1 ,int p2);
 
 int main() {
     system("cls");
-    int abc;
-    printf("assembly proc calling from  from C! \n");
-getch();
+    short array[] = {-3,-4,-2,-10,10,20,30,40};
+    int length = sizeof (array) / sizeof array[0];
+    int result = asmfunc(array , length);
 
-    
-    asmfunc(3,5); //assembly proc calling
-   
-   getch();
-    
-    
-    printf("back to  C! \n"); // printing in c
+if(result != 0){
+     printf("-3,-4,-2,-10 \n");
+}else{
+     printf("No negative value found"); // printing in c
+}
     
   
     
